@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(OpenCV REQUIRED)
 find_package(kaylordut REQUIRED)
 
-add_executable(rk3588_hdmi_in main.cpp)
+file(GLOB SRC "./*.cpp")
+
+add_executable(rk3588_hdmi_in ${SRC})
 target_link_libraries(rk3588_hdmi_in PRIVATE
         ${OpenCV_LIBS}
         ${kaylordut_LIBS}
