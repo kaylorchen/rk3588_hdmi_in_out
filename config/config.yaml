@@ -1,0 +1,2 @@
+hdmi_in: "/dev/video11"
+framebuffer: "/dev/fb0"
