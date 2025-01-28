@@ -1,3 +1,15 @@
+# 添加源
+```bash
+cat << 'EOF' | sudo tee /etc/apt/sources.list.d/kaylordut.list 
+deb [signed-by=/etc/apt/keyrings/kaylor-keyring.gpg] http://apt.kaylordut.cn/kaylordut/ kaylordut main
+EOF
+sudo mkdir /etc/apt/keyrings -pv
+sudo wget -O /etc/apt/keyrings/kaylor-keyring.gpg http://apt.kaylordut.cn/kaylor-keyring.gpg
+sudo apt update
+sudo apt install kaylordut-dev libbytetrack ai-instance
+```
+
+
 
 ```bash
 > v4l2-ctl -d /dev/video11 -V -D
