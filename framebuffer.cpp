@@ -66,7 +66,10 @@ bool FrameBuffer::WriteFrameBuffer(const cv::Mat image) {
   cv::Mat result;
   cv::resize(image, result,
              cv::Size(var_screeninfo_.xres, var_screeninfo_.yres));
-  cv::cvtColor(result, result, cv::COLOR_BGR2BGRA);
+  if (image.channels() != 4) {
+    KAYLORDUT_TIME_COST_INFO("BGR2BGRA",
+                             cv::cvtColor(result, result, cv::COLOR_BGR2BGRA));
+  }
   auto dst = fb_ptr_;
   auto src = result.data;
   for (int i = 0; i < result.rows; ++i) {
