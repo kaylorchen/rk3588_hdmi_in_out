@@ -7,8 +7,7 @@
 YoloPreProcess::YoloPreProcess(int target_side_length, bool debug)
     : target_side_length_(target_side_length), debug_(debug) {}
 
-void YoloPreProcess::Run(const std::vector<cv::Mat> &input,
-                         uint8_t *tensors[]) {
+void YoloPreProcess::Run(const std::vector<cv::Mat> &input, void *tensors[]) {
   for (int i = 0; i < input.size(); ++i) {
     auto &original_input = input.at(i);
     int resize_width = target_side_length_;

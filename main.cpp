@@ -43,7 +43,8 @@ int main(int argc, char **argv) {
   std::vector<cv::Mat> input(1);
   std::shared_ptr<YoloThreadpool::YoloInferenceResult> result = nullptr;
   while (true) {
-    input.at(0) = hdmi_in.get_next_frame();
+    KAYLORDUT_TIME_COST_DEBUG("read frame",
+                              input.at(0) = hdmi_in.get_next_frame());
     if (!input.at(0).empty()) {
       yolo_threadpool.AddInferenceTask(input, get_now(), true);
     }
@@ -55,7 +56,8 @@ int main(int argc, char **argv) {
                                 result->original_image.at(0),
                                 yolo_threadpool.get_model_input_side_length(),
                                 result->results, labels, false));
-      frame_buffer.WriteFrameBuffer(res_image);
+      KAYLORDUT_TIME_COST_DEBUG("write frame",
+                                frame_buffer.WriteFrameBuffer(res_image));
     } else {
     }
   }

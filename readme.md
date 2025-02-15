@@ -12,7 +12,7 @@ sudo apt install kaylordut-dev libbytetrack ai-instance
 
 
 ```bash
-> v4l2-ctl -d /dev/video11 -V -D
+> v4l2-ctl -d /dev/video0 -V -D
 Driver Info:
 	Driver name      : rk_hdmirx
 	Card type        : rk_hdmirx

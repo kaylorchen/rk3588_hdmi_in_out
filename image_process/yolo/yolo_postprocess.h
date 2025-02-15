@@ -44,7 +44,7 @@ class YoloPostProcess {
   YoloPostProcess(const ai_framework::Config &config,
                   std::vector<float> &conf_threshold, float sum_conf_threshold,
                   float iou_threshold = 0.5f);
-  void Run(uint8_t **&tensors);
+  void Run(void **&tensors);
   const std::vector<Result> &get_result() const { return result_; }
 
  private:

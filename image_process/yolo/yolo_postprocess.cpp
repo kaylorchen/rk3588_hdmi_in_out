@@ -73,21 +73,22 @@ YoloPostProcess::YoloPostProcess(const ai_framework::Config &config,
   }
 }
 
-void YoloPostProcess::Run(uint8_t **&tensors) {
+void YoloPostProcess::Run(void **&tensors) {
   result_.clear();
   bboxes_.clear();
   class_id_.clear();
   obj_probs_.clear();
   bboxes_idx_.clear();
+  auto data = (uint8_t **)tensors;
   if (model_type_ == ModelType::DETECTION_V8 ||
       model_type_ == ModelType::DETECTION_V10 ||
       model_type_ == ModelType::DETECTION_V11 ||
       model_type_ == ModelType::SEGMENT_V11) {
-    PostProcessDetectSegment(tensors);
+    PostProcessDetectSegment(data);
   } else if (model_type_ == ModelType::POSE_V8) {
     kpt.clear();
     visibilities.clear();
-    PostProcessPose(tensors);
+    PostProcessPose(data);
   }
 }
 

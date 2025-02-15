@@ -9,7 +9,7 @@ class YoloPreProcess {
  public:
   YoloPreProcess() = delete;
   YoloPreProcess(int target_side_length, bool debug = false);
-  void Run(const std::vector<cv::Mat> &input, uint8_t *tensors[]);
+  void Run(const std::vector<cv::Mat> &input, void *tensors[]);
   const int &get_target_side_length() const { return target_side_length_; }
 
  private:
