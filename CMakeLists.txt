@@ -20,3 +20,6 @@ target_link_libraries(rk3588_hdmi_in PRIVATE
         ${YAML_CPP_LIBRARIES}
 )
 target_include_directories(rk3588_hdmi_in PRIVATE ${OpenCV_INCLUDE_DIRS} )
+
+add_executable(update_edid update_edid.cpp)
+target_link_libraries(update_edid ${kaylordut_LIBS})
