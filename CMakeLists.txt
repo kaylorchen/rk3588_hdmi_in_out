@@ -26,3 +26,10 @@ target_link_libraries(update_edid ${kaylordut_LIBS})
 add_executable(play_video play_video/main.cpp framebuffer.cpp)
 target_link_libraries(play_video ${kaylordut_LIBS} ${OpenCV_LIBS})
 target_include_directories(play_video PRIVATE ${OpenCV_INCLUDE_DIRS} )
+
+add_executable(save_image save_image/main.cpp hdmi_in.cpp)
+target_link_libraries(save_image PRIVATE
+        ${OpenCV_LIBS}
+        ${kaylordut_LIBS}
+)
+target_include_directories(save_image PRIVATE ${OpenCV_INCLUDE_DIRS})
